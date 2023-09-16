@@ -31,9 +31,13 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: "#FFF"
+
   },
   price: {
     fontSize: 14,
+    color: "#FFF"
+
   },
 });
 

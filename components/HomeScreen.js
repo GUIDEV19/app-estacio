@@ -1,7 +1,7 @@
 import { View,Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
 import AmazonLogo from '../assets/loa.png';
 import ProductItem from './ProdutoComponent';
-import MovieTheWhell from '../assets/the_wheel_of_time.png';
+
 
 
 const productList = [
@@ -201,7 +201,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: "#232F3E",
+        backgroundColor: "#141414",
         alignItems: "flex-start",
     },
 

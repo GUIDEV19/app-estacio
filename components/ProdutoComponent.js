@@ -6,7 +6,7 @@ const ProductItem = ({ name, price, imageUrl }) => {
     <View style={styles.container}>
       <Image source={{ uri: imageUrl }} style={styles.image} />
       <Text style={styles.name}>{name}</Text>
-      <Text style={styles.price}>Price: ${price}</Text>
+      <Text style={styles.price}>R${price}</Text>
     </View>
   );
 };

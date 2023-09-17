@@ -9,31 +9,31 @@ const productList = [
       id: '1',
       name: 'Produto 1',
       price: 19.99,
-      imageUrl: 'https://reactnative.dev/img/tiny_logo.png',
+      imageUrl: 'https://static.wixstatic.com/media/fc9aa0_eeaa8cb6482141f585acedeb1db7e95a~mv2.jpg/v1/fill/w_276,h_490,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/fc9aa0_eeaa8cb6482141f585acedeb1db7e95a~mv2.jpg',
     },
     {
       id: '2',
       name: 'Produto 2',
       price: 29.99,
-      imageUrl: 'https://reactnative.dev/img/tiny_logo.png',
+      imageUrl: 'https://static.wixstatic.com/media/fc9aa0_44cdf0fe24234de9a5e4567bebbb475c~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/fc9aa0_44cdf0fe24234de9a5e4567bebbb475c~mv2.jpg',
     },
     {
       id: '3',
       name: 'Produto 3',
       price: 14.99,
-      imageUrl: 'https://reactnative.dev/img/tiny_logo.png',
+      imageUrl: 'https://static.wixstatic.com/media/fc9aa0_37914445dd7045868a44c5fedadab22d~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/fc9aa0_37914445dd7045868a44c5fedadab22d~mv2.jpg',
     },
     {
       id: '4',
       name: 'Produto 4',
       price: 39.99,
-      imageUrl: 'https://reactnative.dev/img/tiny_logo.png',
+      imageUrl: 'https://static.wixstatic.com/media/fc9aa0_2a4a5c9aad834a7799385987127c0749~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/fc9aa0_2a4a5c9aad834a7799385987127c0749~mv2.jpg',
     },
     {
       id: '5',
       name: 'Produto 5',
       price: 24.99,
-      imageUrl: 'https://reactnative.dev/img/tiny_logo.png',
+      imageUrl: 'https://static.wixstatic.com/media/fc9aa0_4fcafa840a204c76aa2e3276af0be793~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/fc9aa0_4fcafa840a204c76aa2e3276af0be793~mv2.jpg',
     },
     {
       id: '6',
@@ -102,7 +102,7 @@ const HomeScreen = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Image style={styles.amazonLogoImg} source={AmazonLogo}/>
+                <Image resizeMode="contain" style={styles.amazonLogoImg} source={AmazonLogo}/>
             </View>
 
             <View style={styles.category} >
@@ -110,13 +110,13 @@ const HomeScreen = () => {
                     <Text style={styles.categoryText}>Home</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
+                    <Text style={styles.categoryText}>Novidades</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={styles.categoryText}>Mais vendidos</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
                     <Text style={styles.categoryText}>Contato</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.categoryText}>Blablabla</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.categoryText}>Blablabla</Text>
                 </TouchableOpacity>
             </View>
 
@@ -207,27 +207,28 @@ const styles = StyleSheet.create({
 
     header: {
         width: "100%",
-        padding: 80,
-        marginTop: -210,
+        height: "30%",
         alignItems: "center",
         justifyContent: "center",
+        marginBottom: 30,
     },
 
     amazonLogoImg: {
-        marginTop: 80,
-        marginLeft: 30,
+        width: "100%",
+        height: "100%"
+
     },
 
     category: {
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-evenly",
-        marginTop: -70,
+        marginTop: 0,
         marginBottom: 15,
     },
 
     categoryText: {
-        fontSize: 14,
+        fontSize: 18,
         fontWeight: "700",
         color: "#FFF"
     },

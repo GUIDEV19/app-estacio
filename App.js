@@ -8,7 +8,7 @@ import FormProduto from './components/FormProduto';
 export default function App() {
   return (
     <>
-      <FormProduto/>
+      <HomeScreen/>
     </>
   );
 }

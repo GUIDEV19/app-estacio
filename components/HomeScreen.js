@@ -1,15 +1,15 @@
 import { View,Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
-import AmazonLogo from '../assets/loa.png';
 import ProductItem from './ProdutoComponent';
 import { useEffect } from "react";
 import FIRESTORE_DB from '../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
+import LogoLoa from "./Logo";
 
 
 
 const HomeScreen = () => {
-  
   var productList = [];
+  
   
   useEffect(() =>{
     const produtosRef = collection(FIRESTORE_DB,'produtos');
@@ -24,9 +24,7 @@ const HomeScreen = () => {
   });
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Image resizeMode="contain" style={styles.amazonLogoImg} source={AmazonLogo}/>
-            </View>
+            <LogoLoa/>
 
             <View style={styles.category} >
                 <TouchableOpacity>

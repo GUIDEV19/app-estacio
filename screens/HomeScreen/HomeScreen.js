@@ -1,9 +1,9 @@
 import { View,Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
-import ProductItem from './ProdutoComponent';
+import ProductItem from '../../components/ProdutoComponent';
 import { useEffect, useState } from "react";
-import FIRESTORE_DB from '../firebaseConfig';
+import FIRESTORE_DB from '../../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
-import LogoLoa from "./Logo";
+import LogoLoa from "../../components/Logo";
 
 
 const HomeScreen = () => {

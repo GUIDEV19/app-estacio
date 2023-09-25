@@ -1,27 +1,29 @@
 import { View,Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
 import ProductItem from './ProdutoComponent';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FIRESTORE_DB from '../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
 import LogoLoa from "./Logo";
 
 
-
 const HomeScreen = () => {
-  var productList = [];
-  
-  
+  var [productList, setProductList] = useState([]);
+
   useEffect(() =>{
     const produtosRef = collection(FIRESTORE_DB,'produtos');
     const subscriber = onSnapshot(produtosRef, {
       next: (snapshot) => {
+        productList = [];
         snapshot.docs.forEach(doc =>{
           productList.push({id:doc.id, ...doc.data()});
-          console.log(doc.data());
-        })
-      }
+        });
+        setProductList(productList);
+      },
     });
-  });
+    return () => subscriber();
+  }, []);
+
+
     return (
         <View style={styles.container}>
             <LogoLoa/>

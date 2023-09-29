@@ -1,32 +1,39 @@
-import { View,Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
 import ProductItem from '../../components/ProdutoComponent';
 import { useEffect, useState } from "react";
 import FIRESTORE_DB from '../../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
 import LogoLoa from "../../components/Logo";
+import { useNavigation } from "@react-navigation/native";
 
 
-const HomeScreen = () => {
-  var [productList, setProductList] = useState([]);
+const HomeScreen = ({
+    route, getInfoProduct
+}) => {
+    var [productList, setProductList] = useState([]);
+    const navigation = useNavigation();
+    const onClickRedirectProductInfo = () => {
+        navigation.navigate("Info")
+    }
 
-  useEffect(() =>{
-    const produtosRef = collection(FIRESTORE_DB,'produtos');
-    const subscriber = onSnapshot(produtosRef, {
-      next: (snapshot) => {
-        productList = [];
-        snapshot.docs.forEach(doc =>{
-          productList.push({id:doc.id, ...doc.data()});
+    useEffect(() => {
+        const produtosRef = collection(FIRESTORE_DB, 'produtos');
+        const subscriber = onSnapshot(produtosRef, {
+            next: (snapshot) => {
+                productList = [];
+                snapshot.docs.forEach(doc => {
+                    productList.push({ id: doc.id, ...doc.data() });
+                });
+                setProductList(productList);
+            },
         });
-        setProductList(productList);
-      },
-    });
-    return () => subscriber();
-  }, []);
+        return () => subscriber();
+    }, []);
 
 
     return (
         <View style={styles.container}>
-            <LogoLoa/>
+            <LogoLoa />
 
             <View style={styles.category} >
                 <TouchableOpacity>
@@ -45,80 +52,116 @@ const HomeScreen = () => {
 
             <ScrollView showsVerticalScrollIndicator={false} style={styles.contentMovies}>
 
-
-                
                 <Text style={styles.movieText}>Aneis</Text>
                 <FlatList
-                        data={productList}
-                        keyExtractor={(item) => item.id}
-                        renderItem={({ item }) => (
-                        <ProductItem
-                            name={item.name}
-                            price={item.value}
-                            imageUrl={item.url}
-                        />
-                        )}
-                        horizontal
-                        contentContainerStyle={styles.contentList}
-                        showsHorizontalScrollIndicator={false}
-                    />
+                    data={productList}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            onPress={() => {
+                                getInfoProduct(item);
+                                setTimeout(() => {
+                                    onClickRedirectProductInfo();
+                                }, 500)
+                            }}
+                        >
+                            <ProductItem
+                                name={item.name}
+                                price={item.value}
+                                imageUrl={item.url}
+                                productId={item.id}
+                            />
+                        </TouchableOpacity>
+                    )}
+                    horizontal
+                    contentContainerStyle={styles.contentList}
+                    showsHorizontalScrollIndicator={false}
+                />
 
-                
+
                 <Text style={styles.movieText}>Pulseiras</Text>
                 <FlatList
-                        data={productList}
-                        keyExtractor={(item) => item.id}
-                        renderItem={({ item }) => (
-                        <ProductItem
-                            name={item.name}
-                            price={item.value}
-                            imageUrl={item.url}
-                        />
-                        )}
-                        horizontal
-                        contentContainerStyle={styles.contentList}
-                        showsHorizontalScrollIndicator={false}
-                    />
+                    data={productList}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            onPress={() => {
+                                getInfoProduct(item);
+                                setTimeout(() => {
+                                    onClickRedirectProductInfo();
+                                }, 500)
+                            }}
+                        >
+                            <ProductItem
+                                name={item.name}
+                                price={item.value}
+                                imageUrl={item.url}
+                                productId={item.id}
+                            />
+                        </TouchableOpacity>
+                    )}
+                    horizontal
+                    contentContainerStyle={styles.contentList}
+                    showsHorizontalScrollIndicator={false}
+                />
 
 
                 <Text style={styles.movieText}>Cordões</Text>
                 <FlatList
-                        data={productList}
-                        keyExtractor={(item) => item.id}
-                        renderItem={({ item }) => (
-                        <ProductItem
-                            name={item.name}
-                            price={item.value}
-                            imageUrl={item.url}
-                        />
-                        )}
-                        horizontal
-                        contentContainerStyle={styles.contentList}
-                        showsHorizontalScrollIndicator={false}
-                    />
+                    data={productList}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            onPress={() => {
+                                getInfoProduct(item);
+                                setTimeout(() => {
+                                    onClickRedirectProductInfo();
+                                }, 500)
+                            }}
+                        >
+                            <ProductItem
+                                name={item.name}
+                                price={item.value}
+                                imageUrl={item.url}
+                                productId={item.id}
+                            />
+                        </TouchableOpacity>
+                    )}
+                    horizontal
+                    contentContainerStyle={styles.contentList}
+                    showsHorizontalScrollIndicator={false}
+                />
 
-                    <Text style={styles.movieText}>Brincos</Text>
-                    <FlatList
-                        data={productList}
-                        keyExtractor={(item) => item.id}
-                        renderItem={({ item }) => (
-                        <ProductItem
-                            name={item.name}
-                            price={item.value}
-                            imageUrl={item.url}
-                        />
-                        )}
-                        horizontal
-                        contentContainerStyle={styles.contentList}
-                        showsHorizontalScrollIndicator={false}
-                    />
+                <Text style={styles.movieText}>Brincos</Text>
+                <FlatList
+                    data={productList}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            onPress={() => {
+                                getInfoProduct(item);
+                                setTimeout(() => {
+                                    onClickRedirectProductInfo();
+                                }, 500)
+                            }}
+                        >
+                            <ProductItem
+                                name={item.name}
+                                price={item.value}
+                                imageUrl={item.url}
+                                productId={item.id}
+                            />
+                        </TouchableOpacity>
+                    )}
+                    horizontal
+                    contentContainerStyle={styles.contentList}
+                    showsHorizontalScrollIndicator={false}
+                />
 
             </ScrollView>
 
         </View>
-        
-    
-    
+
     );
 }
 const styles = StyleSheet.create({

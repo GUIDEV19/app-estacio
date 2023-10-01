@@ -40,13 +40,13 @@ const HomeScreen = ({
 
             <View style={styles.category} >
                 <TouchableOpacity>
-                    <Text style={styles.categoryText}>Home</Text>
+                    <Text style={styles.tabsText}>Home</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={styles.categoryText}>Novidades</Text>
+                    <Text style={styles.tabsText}>Novidades</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={styles.categoryText}>Mais vendidos</Text>
+                    <Text style={styles.tabsText}>Mais vendidos</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => {
@@ -55,13 +55,13 @@ const HomeScreen = ({
                         }, 200)
                     }}
                 >
-                    <Text style={styles.categoryText} >Contato</Text>
+                    <Text style={styles.tabsText} >Contato</Text>
                 </TouchableOpacity>
             </View>
 
-            <ScrollView showsVerticalScrollIndicator={false} style={styles.contentMovies}>
+            <ScrollView showsVerticalScrollIndicator={false} >
 
-                <Text style={styles.movieText}>Aneis</Text>
+                <Text style={styles.categoriaText}>Aneis</Text>
                 <FlatList
                     data={productList}
                     keyExtractor={(item) => item.id}
@@ -88,7 +88,7 @@ const HomeScreen = ({
                 />
 
 
-                <Text style={styles.movieText}>Pulseiras</Text>
+                <Text style={styles.categoriaText}>Pulseiras</Text>
                 <FlatList
                     data={productList}
                     keyExtractor={(item) => item.id}
@@ -115,7 +115,7 @@ const HomeScreen = ({
                 />
 
 
-                <Text style={styles.movieText}>Cordões</Text>
+                <Text style={styles.categoriaText}>Cordões</Text>
                 <FlatList
                     data={productList}
                     keyExtractor={(item) => item.id}
@@ -141,7 +141,7 @@ const HomeScreen = ({
                     showsHorizontalScrollIndicator={false}
                 />
 
-                <Text style={styles.movieText}>Brincos</Text>
+                <Text style={styles.categoriaText}>Brincos</Text>
                 <FlatList
                     data={productList}
                     keyExtractor={(item) => item.id}
@@ -188,11 +188,6 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
 
-    amazonLogoImg: {
-        width: "100%",
-        height: "100%"
-
-    },
 
     category: {
         width: "100%",
@@ -202,22 +197,17 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
 
-    categoryText: {
+    tabsText: {
         fontSize: 18,
         fontWeight: "700",
         color: "#FFF"
     },
 
-    movieText:{
+    categoriaText:{
         fontSize: 18,
         fontWeight: "700",
         color: "#FFF",
         padding: 15
-    },
-
-    movieImageThumbnail: {
-        width: "100%",
-        alignItems: "center"
     },
 
     contentList: {
@@ -225,9 +215,6 @@ const styles = StyleSheet.create({
         paddingRight: 30,
     },
 
-    contentMovies: {
-
-    }
 });
 
 export default HomeScreen;

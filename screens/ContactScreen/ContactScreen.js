@@ -1,12 +1,12 @@
-import { Text, View, StyleSheet, Linking, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Linking, TouchableOpacity, ScrollView } from 'react-native';
 import LogoLoa from '../../components/Logo.js'
 import { Footer } from "../../components/Footer/Footer.js";
 import { StatusBar } from 'expo-status-bar';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function ContactScreen({route}) {
     const phoneNumber = '123-456-7890';
-    const instagramLink = 'https://www.instagram.com/minhaloja';
+    const instagramLink = 'https://www.instagram.com/loa.pratas_';
 
     const handlePhonePress = () => {
       // Abra o aplicativo de telefone com o número de contato
@@ -20,54 +20,38 @@ export default function ContactScreen({route}) {
     
     return (
         <View style={styles.container}>
+            
             <LogoLoa />
+            <ScrollView showsVerticalScrollIndicator={false} >
             
+            <Text style={styles.title}>Sobre Nossa Loja</Text>
+            
+            <Text style={styles.text}>
+                Obrigado por escolher a Lôa Pratas. 
+                Estamos ansiosos para fazer parte dos momentos mais importantes de sua vida 
+                e ajudá-lo a celebrar o amor, 
+                a beleza e a eternidade. Explore nossa coleção 
+                e permita-nos ser parte da sua história.
+            </Text>
+            
+            
+
             <TouchableOpacity onPress={handleInstagramPress}>
-                <Text style={styles.contactLink}>{instagramLink}</Text>
+                <View style={styles.instagramContainer}>
+                    <Icon name="instagram" size={60} color="#E1306C" />
+                    <Text style={styles.text}>@loa.pratas_</Text>
+                </View>
             </TouchableOpacity>
-            
+
+
             <Footer />
+            </ScrollView>
             <StatusBar style="auto" />
         </View>
-    //     <View style={styles.container}>
-    //   <Text style={styles.title}>Sobre Nossa Loja</Text>
-    //   <Text style={styles.text}>
-    //     Bem-vindo à nossa loja! Estamos felizes em atendê-lo e fornecer produtos de qualidade.
-    //   </Text>
-    //   <Text style={styles.text}>
-    //     Entre em contato conosco:
-    //   </Text>
-    //   <TouchableOpacity onPress={handlePhonePress}>
-    //     <Text style={styles.contactLink}>{phoneNumber}</Text>
-    //   </TouchableOpacity>
-    //   <TouchableOpacity onPress={handleInstagramPress}>
-    //     <Text style={styles.contactLink}>{instagramLink}</Text>
-    //   </TouchableOpacity>
-    // </View>
+    
     );
 }
 
-// const styles = StyleSheet.create({
-//     container: {
-//       flex: 1,
-//       padding: 16,
-//     },
-//     title: {
-//       fontSize: 24,
-//       fontWeight: 'bold',
-//       marginBottom: 16,
-//     },
-//     text: {
-//       fontSize: 16,
-//       marginBottom: 12,
-//     },
-//     contactLink: {
-//       fontSize: 16,
-//       color: 'blue',
-//       textDecorationLine: 'underline',
-//       marginBottom: 8,
-//     },
-//   });
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -118,6 +102,17 @@ export const styles = StyleSheet.create({
         color: 'blue',
         textDecorationLine: 'underline',
         fontSize: 16,
-              marginBottom: 8,
-            },
+        marginBottom: 8,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 16,
+        color: "#FFF"
+    },
+    text: {
+        fontSize: 16,
+        marginBottom: 12,
+        color: "#FFF"
+    },
 });

@@ -14,6 +14,9 @@ const HomeScreen = ({
     const navigation = useNavigation();
     const onClickRedirectProductInfo = () => {
         navigation.navigate("Info")
+    };
+    const onClickRedirectContact = () => {
+        navigation.navigate("Contact")
     }
 
     useEffect(() => {
@@ -45,8 +48,14 @@ const HomeScreen = ({
                 <TouchableOpacity>
                     <Text style={styles.categoryText}>Mais vendidos</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.categoryText}>Contato</Text>
+                <TouchableOpacity
+                    onPress={() => {
+                        setTimeout(() => {
+                            onClickRedirectContact();
+                        }, 200)
+                    }}
+                >
+                    <Text style={styles.categoryText} >Contato</Text>
                 </TouchableOpacity>
             </View>
 

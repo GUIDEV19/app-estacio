@@ -33,9 +33,5 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-<<<<<<< HEAD
-=======
-
->>>>>>> conexao-com-o-banco
 package-lock.json
 yarn.lock

@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 250,
+    height: 250,
     resizeMode: 'cover',
     marginBottom: 10,
   },
   name: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     color: "#FFF"
 

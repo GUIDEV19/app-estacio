@@ -19,6 +19,10 @@ const HomeScreen = ({
         navigation.navigate("Contact")
     }
 
+    const onClickRedirectBestSellers = () => {
+        navigation.navigate("Mais Vendidos")
+    }
+
     useEffect(() => {
         const produtosRef = collection(FIRESTORE_DB, 'produtos');
         const subscriber = onSnapshot(produtosRef, {
@@ -45,7 +49,11 @@ const HomeScreen = ({
                 <TouchableOpacity>
                     <Text style={styles.tabsText}>Novidades</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        onClickRedirectBestSellers();
+                    }}
+                >
                     <Text style={styles.tabsText}>Mais vendidos</Text>
                 </TouchableOpacity>
                 <TouchableOpacity

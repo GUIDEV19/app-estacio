@@ -18,6 +18,10 @@ const HomeScreen = ({
     const onClickRedirectContact = () => {
         navigation.navigate("Contact")
     }
+    
+    const onClickRedirectNewProducts = () => {
+        navigation.navigate("Produtos Novos")
+    };
 
     const onClickRedirectBestSellers = () => {
         navigation.navigate("Mais Vendidos")
@@ -46,7 +50,13 @@ const HomeScreen = ({
                 <TouchableOpacity>
                     <Text style={styles.tabsText}>Home</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity 
+                    onPress={ () => {
+                        setTimeout(() => {
+                            onClickRedirectNewProducts()
+                        }, 200)
+                    }}
+                >
                     <Text style={styles.tabsText}>Novidades</Text>
                 </TouchableOpacity>
                 <TouchableOpacity

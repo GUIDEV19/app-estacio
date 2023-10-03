@@ -53,6 +53,7 @@ export const styles = StyleSheet.create({
     image: {
         height: 500,
         width: "90%",
+        borderRadius: 20
     },
     textHeader: {
         color: "#D1D3D4",

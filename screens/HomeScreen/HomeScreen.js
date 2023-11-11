@@ -11,6 +11,10 @@ const HomeScreen = ({
     route, getInfoProduct
 }) => {
     var [productList, setProductList] = useState([]);
+    var [listaAneis, setListaAneis] = useState([]);
+    var [listaPulseiras, setListaPulseiras] = useState([]);
+    var [listaCordoes, setListaCordoes] = useState([]);
+    var [listaBrincos, setListaBrincos] = useState([]);
     const navigation = useNavigation();
     const onClickRedirectProductInfo = () => {
         navigation.navigate("Info")
@@ -32,10 +36,30 @@ const HomeScreen = ({
         const subscriber = onSnapshot(produtosRef, {
             next: (snapshot) => {
                 productList = [];
+                listaAneis = [];
+                listaPulseiras = [];
+                listaCordoes = [];
+                listaBrincos = [];
                 snapshot.docs.forEach(doc => {
+                    if(doc.data().productInfo.category === "aneis")
+                        listaAneis.push({ id: doc.id, ...doc.data() });
+
+                    if(doc.data().productInfo.category === "pulseiras")
+                        listaPulseiras.push({ id: doc.id, ...doc.data() });
+
+                    if(doc.data().productInfo.category === "cordoes")
+                        listaCordoes.push({ id: doc.id, ...doc.data() });
+
+                    if(doc.data().productInfo.category === "brincos")
+                        listaBrincos.push({ id: doc.id, ...doc.data() });
+
                     productList.push({ id: doc.id, ...doc.data() });
                 });
                 setProductList(productList);
+                setListaAneis(listaAneis);
+                setListaPulseiras(listaPulseiras);
+                setListaCordoes(listaCordoes);
+                setListaBrincos(listaBrincos);
             },
         });
         return () => subscriber();
@@ -81,7 +105,7 @@ const HomeScreen = ({
 
                 <Text style={styles.categoriaText}>Aneis</Text>
                 <FlatList
-                    data={productList}
+                    data={listaAneis}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
                         <TouchableOpacity
@@ -108,7 +132,7 @@ const HomeScreen = ({
 
                 <Text style={styles.categoriaText}>Pulseiras</Text>
                 <FlatList
-                    data={productList}
+                    data={listaPulseiras}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
                         <TouchableOpacity
@@ -135,7 +159,7 @@ const HomeScreen = ({
 
                 <Text style={styles.categoriaText}>Cordões</Text>
                 <FlatList
-                    data={productList}
+                    data={listaCordoes}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
                         <TouchableOpacity
@@ -161,7 +185,7 @@ const HomeScreen = ({
 
                 <Text style={styles.categoriaText}>Brincos</Text>
                 <FlatList
-                    data={productList}
+                    data={listaBrincos}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
                         <TouchableOpacity
